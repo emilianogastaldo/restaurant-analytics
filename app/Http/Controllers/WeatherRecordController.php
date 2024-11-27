@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WeatherRecord extends Controller
+class WeatherRecordController extends Controller
 {
     /**
      * Display a listing of the resource.
