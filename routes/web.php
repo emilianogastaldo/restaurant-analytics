@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+Route::get('/locations/create', [LocationController::class, 'create'])->name('locations.create');
+Route::get('locations/{id}', [LocationController::class, 'show'])->name('locations.show');
 Route::post('/locations', [LocationController::class, 'store'])->name('locations.store');
 
 Route::get('/weather-records', [WeatherRecordController::class, 'index'])->name('weather-records.index');
