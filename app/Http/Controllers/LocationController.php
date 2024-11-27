@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -10,8 +11,9 @@ class LocationController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        $locations = Location::all();
+        return view('index', compact('locations'));
     }
 
     /**
@@ -19,7 +21,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -27,7 +29,17 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Recupero i dati della location
+        $data = $request->all();
+
+        // Creo la nuova location
+        $new_location = new Location();
+        // Inserisco i dati raccolti
+        $new_location->fill($data);
+        // Salvo i dati
+        $new_location->save();
+
+        return view('welcome');
     }
 
     /**
@@ -35,7 +47,8 @@ class LocationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $location = Location::find($id);
+        return view('show', compact('location'));
     }
 
     /**
