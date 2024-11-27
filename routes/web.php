@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\WeatherRecordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+Route::post('/locations', [LocationController::class, 'store'])->name('locations.store');
+
+Route::get('/weather-records', [WeatherRecordController::class, 'index'])->name('weather-records.index');
+Route::post('/weather-records', [WeatherRecordController::class, 'store'])->name('weather-records.store');
