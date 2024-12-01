@@ -9,10 +9,10 @@ class Location extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'latitude', 'longitude'];
+    protected $fillable = ['name', 'city', 'latitude', 'longitude'];
 
     // Funzione per relazionare la location con i dati meteo
-    public function WeatherRecords(){
+    public function weatherRecords(){
         return $this->hasMany(WeatherRecord::class);
     }
 
