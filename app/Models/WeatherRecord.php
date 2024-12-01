@@ -9,6 +9,7 @@ class WeatherRecord extends Model
 {
     use HasFactory;
 
+    // Funzione per relazionare i dati meteo alla location
     public function location()
     {
         return $this->belongsTo(Location::class);

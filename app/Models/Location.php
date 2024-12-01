@@ -11,4 +11,9 @@ class Location extends Model
 
     protected $fillable = ['name', 'latitude', 'longitude'];
 
+    // Funzione per relazionare la location con i dati meteo
+    public function WeatherRecords(){
+        return $this->hasMany(WeatherRecord::class);
+    }
+
 }
