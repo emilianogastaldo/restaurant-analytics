@@ -11,6 +11,8 @@
         @foreach ($locations as $location )
             <li><a href="{{route('locations.show', $location->id)}}">{{$location->name}}</a></li>
         @endforeach
+
+        <a href="{{route('locations.create')}}"> Crea una nuova location </a>
     </ul>
 </body>
 </html>
