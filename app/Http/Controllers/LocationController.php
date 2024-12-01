@@ -55,7 +55,7 @@ class LocationController extends Controller
         $res_json = $res_weather->json();
 
         // Destrutturo la risposta
-        ["current" => $current, "forecast" => $forecast] = $res_json;
+        ["forecast" => $forecast] = $res_json;
 
         // Creo il raccoglitore per i dati del meteo
         $data_to_save = [];
@@ -85,19 +85,31 @@ class LocationController extends Controller
             $new_record->save();
         }
 
-        $dataOra = new DateTime("now", new DateTimeZone("Europe/Rome"));
         
         // Rindirizzo alla pagina della location creata
         return to_route('locations.show', $new_location->id);
     }
-
+    
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
         $location = Location::find($id);
-        return view('show', compact('location'));
+        
+        // Recupero l'ora per recuperare il meteo
+        $date = new DateTime("now", new DateTimeZone("Europe/Rome"));
+        $data_ora = $date->format("Y-m-d H:i:s");
+        $current_weather = WeatherRecord::whereTimestamp($date->format("Y-m-d H:0:0"))->whereLocationId($location->id)->first();
+        
+        // Preparo i dati per il grafico
+        $hours = [];
+        $temperatures = [];
+        foreach($location->weatherRecords as $day){
+            $hours[] = date('d-m-Y H:i', strtotime($day["timestamp"]));
+            $temperatures[] = $day["temperature"];
+        }
+        return view('show', compact('location', 'data_ora', 'current_weather', 'hours', 'temperatures'));
     }
 
     /**
