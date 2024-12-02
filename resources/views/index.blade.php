@@ -23,13 +23,17 @@
                 @php
                     $count = 1;
                 @endphp
-                @foreach ($locations as $location)
+                @forelse ($locations as $location)
                 <tr>
                     <th scope="row">{{$count++}}</th>
                     <td><a href="{{route('locations.show', $location->id)}}">{{$location->name}}</a></td>
                     <td>{{$location->city}}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="3" style="text-align: center">Aggiungi una location</td>
                 </tr>                    
-                @endforeach
+                @endforelse
             </tbody>
         </table>
     </main>
