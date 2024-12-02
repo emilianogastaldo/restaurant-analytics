@@ -9,12 +9,30 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    <ul>
-        @foreach ($locations as $location )
-            <li><a href="{{route('locations.show', $location->id)}}">{{$location->name}}</a></li>
-        @endforeach
+    @include('includes.navbar')
+    <main>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome locale</th>
+                    <th scope="col">Città</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $count = 1;
+                @endphp
+                @foreach ($locations as $location)
+                <tr>
+                    <th scope="row">{{$count++}}</th>
+                    <td><a href="{{route('locations.show', $location->id)}}">{{$location->name}}</a></td>
+                    <td>{{$location->city}}</td>
+                </tr>                    
+                @endforeach
+            </tbody>
+        </table>
+    </main>
 
-        <a href="{{route('locations.create')}}"> Crea una nuova location </a>
-    </ul>
 </body>
 </html>

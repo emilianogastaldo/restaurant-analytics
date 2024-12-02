@@ -10,6 +10,7 @@
     @vite('resources/js/app.js')
 </head>
 <body>
+    @include('includes.navbar')
     <main>
         <div class="container">
             <div class="location-info">

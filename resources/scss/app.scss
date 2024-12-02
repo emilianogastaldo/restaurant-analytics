@@ -1,1 +1,57 @@
 @import '~bootstrap/scss/bootstrap';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+main{
+    padding: 0 15px;
+}
+.container{
+    display: flex;
+
+    #canvas{
+        height: 460px;
+        margin: auto;
+    }
+}
+
+menu{
+    background-color: rgba(0,0,0,0.5);
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
+        .active{
+            color: white;
+        }
+        a{
+            color: black;
+        }
+    }
+}
+
+#create-form{
+    width: 50%;
+    margin: auto;
+}
+
+.table{
+    width: 70%;
+    margin: auto;
+}

@@ -9,25 +9,31 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    <form action="{{route('locations.store')}}" method="POST">
-        @csrf
-        <label for="name">
-            Nome
-            <input type="text" name="name" id="name">
-        </label>
-        <label for="city">
-            Città
-            <input type="text" name="city" id="city">
-        </label>
-        <label for="lat">
-            Latitudine
-            <input type="text" name="latitude" id="lat">
-        </label>
-        <label for="lon">
-            Longitudine
-            <input type="text" name="longitude" id="lon">
-        </label>
-        <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk me-2"></i>Salva</button>
-    </form>
+    @include('includes.navbar')
+    <main>
+        <form id="create-form" action="{{route('locations.store')}}" method="POST">
+            @csrf
+            <div class="row row-cols-2 g-3">
+                <label for="name" class="col">
+                    Nome
+                    <input type="text" name="name" id="name">
+                    <ul class="list-group" id="flats-list"></ul>
+                </label>
+                <label for="city" class="col">
+                    Città
+                    <input type="text" name="city" id="city">
+                </label>
+                <label for="lat" class="col">
+                    Latitudine
+                    <input type="text" name="latitude" id="lat">
+                </label>
+                <label for="lon" class="col">
+                    Longitudine
+                    <input type="text" name="longitude" id="lon">
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Salva</button>
+        </form>
+    </main>
 </body>
 </html>
